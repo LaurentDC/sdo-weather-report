@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <!--<members>LDC_Http_Callout</members>
+        <members>LDC_Weather_Http_Callout</members>
+        <members>LDC_HttpResponseMock</members>
+        <members>LDC_ResponseMockGenerator</members>
+        <members>LDC_CalloutException</members>
+        <members>LDC_LocationService</members>
+        <members>LDC_WRP001_WeatherPayload</members>
+        <members>LDC_Weather_WebService</members>
+        <members>LDC_WeatherUtils</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>LDC_Weather_Settings__c</members>
+        <members>Weather_Condition__mdt</members>-->
+        <members>LDC_Weather_Report__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>LDC_Send_Weather_Report_By_Email</members>
+        <name>Flow</name>
+    </types>
+    <!-- Add permsets -->
+    <!-- Add profiles -->
+    <!-- Add layout -->
+    <!-- Add tabs -->
+    <!-- Add flows -->
+    <version>59.0</version>
+</Package>
