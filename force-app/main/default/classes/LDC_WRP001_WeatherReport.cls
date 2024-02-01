@@ -6,27 +6,27 @@
  */
 public class LDC_WRP001_WeatherReport {
     @AuraEnabled
-    public Integer temperature;
+    public Integer temperature {get;set;}
     @AuraEnabled
-    public Integer humidity;
+    public Integer humidity {get;set;}
     @AuraEnabled
-    public Integer windSpeed;
+    public Integer windSpeed {get;set;}
     @AuraEnabled
-    public String weatherConditionLabel;
+    public String weatherConditionLabel {get;set;}
     @AuraEnabled
-    public String conditionIconUrl;
+    public String conditionIconUrl {get;set;}
     @AuraEnabled
-    public String conditionKey;
+    public String conditionKey {get;set;}
     @AuraEnabled
-    public String status;
+    public String status {get;set;}
     @AuraEnabled
-    public String message;
+    public String message {get;set;}
     @AuraEnabled
-    public String recordId;
+    public String recordId {get;set;}
     @AuraEnabled
-    public String recordType;
+    public String recordType {get;set;}
     @AuraEnabled
-    public Double latitude;
+    public Double latitude {get;set;}
     @AuraEnabled
-    public Double longitude;
+    public Double longitude {get;set;}
 }

@@ -17,7 +17,7 @@ public with sharing class LDC_WeatherServiceController {
     private static final String ERROR = 'Error';
 
     @AuraEnabled(Cacheable=true)
-    public static LDC_WRP001_WeatherPayload getWeatherResponse(String objectType, String parameterValue) {
+    public static LDC_WRP001_WeatherReport getWeatherResponse(String objectType, String parameterValue) {
         System.debug('LDC In getWeatherResponse for objectType: ' + objectType +' and parameterValue: ' + parameterValue);
         Decimal lat;
         Decimal lng;
@@ -43,14 +43,14 @@ public with sharing class LDC_WeatherServiceController {
      */
 
     @AuraEnabled
-    public static String saveWeatherReport(String weatherReport) {
+    public static String saveWeatherReport(LDC_WRP001_WeatherReport weatherReport) {
         System.debug('LDC weatherReport in saveWeatherReport: '+ weatherReport);
-        Map<String,Object> weatherReportMap = (Map<String,Object>) JSON.deserializeUntyped(weatherReport);
+        //Map<String,Object> weatherReportMap = (Map<String,Object>) JSON.deserializeUntyped(weatherReport);
         //LDC_WeaterReportService reportService = new LDC_WeaterReportService();
         
         String result;
         try {
-            result = LDC_WeaterReportService.insertWeatherReport(weatherReportMap);
+            result = LDC_WeaterReportService.insertWeatherReport(weatherReport);
         } catch (Exception e) {
             result = ERROR;
             throw new AuraHandledException(e.getMessage());

@@ -31,6 +31,7 @@ export default class LDC_NewWeatherReportComponent extends LightningElement {
     @track error;
     @track labels;
     @track parameterValue;
+    @track status;
 
     @api
     get recordId() {
@@ -102,20 +103,22 @@ export default class LDC_NewWeatherReportComponent extends LightningElement {
         this.labels = getWeatherLabels();
     }
     handleClick(event) {
-        var payload = {
-            temperature: this.weatherData.temperature? this.weatherData.temperature : null,
-            humidity: this.weatherData.humidity? this.weatherData.humidity : null,
-            windSpeed: this.weatherData.windSpeed? this.weatherData.windSpeed : null,
+        var wrapper = {
+            temperature: this.weatherData.temperature? parseInt(this.weatherData.temperature) : null,
+            humidity: this.weatherData.humidity? parseInt(this.weatherData.humidity) : 0,
+            windSpeed: this.weatherData.windSpeed? parseInt(this.weatherData.windSpeed) : 0,
             weatherConditionLabel: this.weatherData.weatherConditionLabel? this.weatherData.weatherConditionLabel : null,
             weatherConditionKey: this.weatherData.weatherConditionKey? this.weatherData.weatherConditionKey : null,
-            accountId: this.recordId? this.recordId : null,
-            latitude: this.objectType === 'User'? this.parameterValue.split(',')[0] : null,
-            longitude: this.objectType === 'User'? this.parameterValue.split(',')[1] : null
+            recordId: this.recordId? this.recordId : null,
+            recordType: this.objectType? this.objectType : null,
+            latitude: (this.objectType === 'User' && this.parameterValue != null) ? parseFloat(this.parameterValue.split(',')[0]) : null,
+            longitude: (this.objectType === 'User' && this.parameterValue != null) ? parseFloat(this.parameterValue.split(',')[1]) : null
         }
         console.log('LDC_NewWeatherReportComponent handleClick payload to send : ');
-        console.log(JSON.stringify(payload));
-        saveWeatherReport({weatherReport: JSON.stringify(payload)})
+        console.log(JSON.stringify(wrapper));
+        saveWeatherReport({weatherReport: wrapper})
             .then(result => {
+                this.status = result;
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Success',
@@ -125,6 +128,8 @@ export default class LDC_NewWeatherReportComponent extends LightningElement {
                     }));
             })
             .catch(error => {
+                this.error = error.body.message;
+                this.status = 'Error';
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Error',

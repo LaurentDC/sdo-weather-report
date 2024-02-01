@@ -19,9 +19,9 @@ public with sharing class LDC_Weather_WebService {
      * @return: LDC_WRP001_WeatherPayload: the weather data for the record formatted as a LDC_WRP001_WeatherPayload object
      */
 
-    public static LDC_WRP001_WeatherPayload getWeatherResponse(String lat, String lng) {
+    public static LDC_WRP001_WeatherReport getWeatherResponse(String lat, String lng) {
 
-        LDC_WRP001_WeatherPayload wrapper = new LDC_WRP001_WeatherPayload();
+        LDC_WRP001_WeatherReport wrapper = new LDC_WRP001_WeatherReport();
         LDC_Weather_Settings__c ws = LDC_Weather_Settings__c.getOrgDefaults();
         String host = ws.host__c;
         String endpoint = ws.endpoint__c;
@@ -41,9 +41,9 @@ public with sharing class LDC_Weather_WebService {
             Map<String,String> payload = new Map<String,String>();
             if (result.containsKey('weatherObservation')) {
                 Map<String, Object> weatherObservation = (Map<String,Object>)result.get('weatherObservation');
-                wrapper.temperature = String.valueOf(weatherObservation.get('temperature'));
-                wrapper.humidity = String.valueOf(weatherObservation.get('humidity'));
-                wrapper.windSpeed = String.valueOf(weatherObservation.get('windSpeed'));
+                wrapper.temperature = Integer.valueOf(weatherObservation.get('temperature'));
+                wrapper.humidity = Integer.valueOf(weatherObservation.get('humidity'));
+                wrapper.windSpeed = Integer.valueOf(weatherObservation.get('windSpeed'));
                 wrapper.weatherConditionLabel = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionLabel');
                 wrapper.conditionIconUrl = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionIcon');
                 wrapper.conditionKey = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionKey');
