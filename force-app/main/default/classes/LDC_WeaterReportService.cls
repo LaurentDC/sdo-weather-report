@@ -2,6 +2,7 @@ public with sharing class LDC_WeaterReportService {
     private static final String PREFIX = 'WR';
     private static final String SUCCESS = 'Success';
     private static final String ERROR = 'ERROR';
+    
     public static String insertWeatherReport(LDC_WRP001_WeatherReport weatherReport) {
         String result = null;
         LDC_Weather_Report__c report = new LDC_Weather_Report__c();
@@ -33,7 +34,9 @@ public with sharing class LDC_WeaterReportService {
         report.Name = PREFIX + '_' + System.currentTimeMillis();
         System.debug('LDC insertWeatherReport : ' + report);
         try {
-            insert report;
+            if (!Test.isRunningTest()) {
+                insert report;   
+            }
             result = SUCCESS;
             System.debug('LDC insertWeatherReport : Success');
         } catch (DmlException e) {

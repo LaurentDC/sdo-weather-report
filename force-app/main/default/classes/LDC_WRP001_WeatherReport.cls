@@ -29,4 +29,8 @@ public class LDC_WRP001_WeatherReport {
     public Double latitude {get;set;}
     @AuraEnabled
     public Double longitude {get;set;}
+
+    public static List<LDC_WRP001_WeatherReport> getSampleWeatherData(String jsonInput) {
+        return (List<LDC_WRP001_WeatherReport>) System.JSON.deserialize(jsonInput, List<LDC_WRP001_WeatherReport>.class);
+    }
 }

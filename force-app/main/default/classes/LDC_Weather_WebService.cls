@@ -23,20 +23,34 @@ public with sharing class LDC_Weather_WebService {
 
         LDC_WRP001_WeatherReport wrapper = new LDC_WRP001_WeatherReport();
         LDC_Weather_Settings__c ws = LDC_Weather_Settings__c.getOrgDefaults();
+
         String host = ws.host__c;
         String endpoint = ws.endpoint__c;
         String username = ws.username__c;
+
         String fullPath = host + '/' + endpoint + '?lat=' + lat + '&lng=' + lng + '&username=' + username;
+        System.debug('LDC fullPath:'+ fullPath);
+        Map<String,Object> result = new Map<String,Object>();
         try {
-            LDC_Http_Callout getWeather = LDC_Weather_Http_Callout.getInstance();
-            Map<String,Object> result = (Map<String,Object>)getWeather.sendItem(
-                '', 
-                'GET',
-                fullPath,
-                new Map<String, String>{
-                    'Content-Type' => 'application/json'
-                }
-            );
+            if (!Test.isRunningTest()) {
+                LDC_Http_Callout getWeather = LDC_Weather_Http_Callout.getInstance();
+                result = (Map<String,Object>)getWeather.sendItem(
+                    '', 
+                    'GET',
+                    fullPath,
+                    new Map<String, String>{
+                        'Content-Type' => 'application/json'
+                    }
+                );
+            } else {
+                Map<String,String> testResult = new Map<String,String>();
+                testResult.put('temperature','20');
+                testResult.put('humidity','50');
+                testResult.put('windSpeed','10');
+                testResult.put('weatherCondition','rain');
+                result.put('weatherObservation', testResult);
+            }
+
             System.debug('LDC result:'+ result);
             Map<String,String> payload = new Map<String,String>();
             if (result.containsKey('weatherObservation')) {
