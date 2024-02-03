@@ -6,11 +6,11 @@
  */
 public class LDC_WRP001_WeatherReport {
     @AuraEnabled
-    public Integer temperature {get;set;}
+    public Decimal temperature {get;set;}
     @AuraEnabled
-    public Integer humidity {get;set;}
+    public Decimal humidity {get;set;}
     @AuraEnabled
-    public Integer windSpeed {get;set;}
+    public Decimal windSpeed {get;set;}
     @AuraEnabled
     public String weatherConditionLabel {get;set;}
     @AuraEnabled

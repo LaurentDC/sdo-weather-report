@@ -41,9 +41,9 @@ public with sharing class LDC_Weather_WebService {
             Map<String,String> payload = new Map<String,String>();
             if (result.containsKey('weatherObservation')) {
                 Map<String, Object> weatherObservation = (Map<String,Object>)result.get('weatherObservation');
-                wrapper.temperature = Integer.valueOf(weatherObservation.get('temperature'));
-                wrapper.humidity = Integer.valueOf(weatherObservation.get('humidity'));
-                wrapper.windSpeed = Integer.valueOf(weatherObservation.get('windSpeed'));
+                wrapper.temperature = Double.valueOf(weatherObservation.get('temperature'));
+                wrapper.humidity = Double.valueOf(weatherObservation.get('humidity'));
+                wrapper.windSpeed = Double.valueOf(weatherObservation.get('windSpeed'));
                 wrapper.weatherConditionLabel = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionLabel');
                 wrapper.conditionIconUrl = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionIcon');
                 wrapper.conditionKey = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionKey');

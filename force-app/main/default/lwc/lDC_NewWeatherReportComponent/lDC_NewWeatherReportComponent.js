@@ -104,9 +104,9 @@ export default class LDC_NewWeatherReportComponent extends LightningElement {
     }
     handleClick(event) {
         var wrapper = {
-            temperature: this.weatherData.temperature? parseInt(this.weatherData.temperature) : null,
-            humidity: this.weatherData.humidity? parseInt(this.weatherData.humidity) : 0,
-            windSpeed: this.weatherData.windSpeed? parseInt(this.weatherData.windSpeed) : 0,
+            temperature: this.weatherData.temperature? parseFloat(this.weatherData.temperature) : null,
+            humidity: this.weatherData.humidity? parseFloat(this.weatherData.humidity) : 0,
+            windSpeed: this.weatherData.windSpeed? parseFloat(this.weatherData.windSpeed) : 0,
             weatherConditionLabel: this.weatherData.weatherConditionLabel? this.weatherData.weatherConditionLabel : null,
             weatherConditionKey: this.weatherData.weatherConditionKey? this.weatherData.weatherConditionKey : null,
             recordId: this.recordId? this.recordId : null,
