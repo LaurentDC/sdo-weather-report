@@ -13,13 +13,13 @@ private class LDC_WeatherServiceController_Test {
     static void getUserWeatherResponse_Test() {
         LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
         report = LDC_WeatherServiceController.getWeatherResponse('User', '48.85341,2.3488');
-        System.assert(report.latitude == 48.85341);
+        System.assert(report.temperature == 20);
     }
     @isTest
     static void getCityWeatherResponse_Test() {
         LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
         report = LDC_WeatherServiceController.getWeatherResponse('City', '48.85341,2.3488');
-        System.assert(report.latitude == 48.85341);
+        System.assert(report.temperature == 20);
     }
     @isTest
     static void getAccountWeatherResponse_Test() {
@@ -27,7 +27,7 @@ private class LDC_WeatherServiceController_Test {
         Account testAccount = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
         report = LDC_WeatherServiceController.getWeatherResponse('Account', (String) testAccount.Id);
         // 48.85341, 2.3488
-        System.assert(report.latitude == 48.85341);
+        System.assert(report.temperature == 20);
     }
     @isTest
     static void saveWeatherReport_Test() {

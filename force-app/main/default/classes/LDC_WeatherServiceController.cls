@@ -36,11 +36,8 @@ public with sharing class LDC_WeatherServiceController {
             lat = locationService.getLat();
             lng = locationService.getLng();
         }
-        if (Test.isRunningTest()) {
-            report = LDC_TestDataFactory.createTestWrapper();
-        } else {
-            report = LDC_Weather_WebService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
-        }
+        report = LDC_Weather_WebService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
+        System.debug('LDC report in getWeatherResponse: '+ report);
         return report;
     }
 

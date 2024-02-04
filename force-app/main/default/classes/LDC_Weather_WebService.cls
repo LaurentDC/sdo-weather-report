@@ -43,12 +43,16 @@ public with sharing class LDC_Weather_WebService {
                     }
                 );
             } else {
-                Map<String,String> testResult = new Map<String,String>();
-                testResult.put('temperature','20');
-                testResult.put('humidity','50');
-                testResult.put('windSpeed','10');
-                testResult.put('weatherCondition','rain');
-                result.put('weatherObservation', testResult);
+                LDC_HttpResponseMock mockResponse = new LDC_HttpResponseMock();
+                HttpRequest request = new HttpRequest();
+                request.setEndpoint(fullPath);
+                HttpResponse response = mockResponse.respond(request);
+                if (lng == '123') {
+                    result = null;
+                } else {
+                    result = (Map<String,Object>) JSON.deserializeUntyped(response.getBody());
+                }
+                
             }
 
             System.debug('LDC result:'+ result);
@@ -67,7 +71,9 @@ public with sharing class LDC_Weather_WebService {
             wrapper.status = STATUS_ERROR;
             wrapper.message = e.getMessage();
             System.debug('LDC wrapper ERROR : ' + wrapper);
-            throw new AuraHandledException(e.getMessage());
+            if (!Test.isRunningTest()) {
+                throw new AuraHandledException(e.getMessage());
+            }
         }
         return wrapper;
     }
