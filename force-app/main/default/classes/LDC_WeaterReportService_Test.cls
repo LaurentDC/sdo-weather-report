@@ -17,9 +17,12 @@ private class LDC_WeaterReportService_Test {
         String PREFIX = 'WR';
         Id currentUserId = UserInfo.getUserId();
         LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
-        report.recordType = 'User';
+        report.recordType = 'USER';
         report.recordId = currentUserId;
+
+        Test.startTest();
         result = LDC_WeaterReportService.insertWeatherReport(report); 
+        Test.stopTest();
         System.assertEquals(result, 'Success');
     }
     @isTest
@@ -31,7 +34,9 @@ private class LDC_WeaterReportService_Test {
         LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
         report.recordType = 'Account';
         report.recordId = testAccount.Id;
+        Test.startTest();
         result = LDC_WeaterReportService.insertWeatherReport(report); 
+        Test.stopTest();
         System.assertEquals(result, 'Success');
     }
 }

@@ -5,14 +5,19 @@ public with sharing class LDC_LocationService {
     public LDC_LocationService(Id sObjectId) {
         if (sObjectId != null) {
             getLatLngFromObject(sObjectId);
+        } else {
+            //throw new Exception('Invalid object Id');
         }
+        System.debug('LDC is ObjectId from LDC_LocationService: ' + this.lat + ',' + this.lng);
     }
     public LDC_LocationService(String lat, String lng) {
         this.lat = decimal.valueOf(lat);
         this.lng = decimal.valueOf(lng);
+        System.debug('LDC is lat,lng from LDC_LocationService: ' + this.lat + ',' + this.lng);
     }
     public LDC_LocationService(String city) {
         getLatLngFromCity(city);
+        System.debug('LDC is city from LDC_LocationService: ' + this.lat + ',' + this.lng);
     }
 
     private void getLatLngFromObject(Id sObjectId){
@@ -24,7 +29,6 @@ public with sharing class LDC_LocationService {
             getLatLngFromContact(sObjectId);
         } else {
             //throw new Exception('Invalid object type');
-            //@todo: Log error or implement other Objects locations
         }
     }
     private String getSObjectType(Id sObjectId) {
@@ -43,7 +47,8 @@ public with sharing class LDC_LocationService {
         this.lng = contact.MailingLongitude;
     }
     private void getLatLngFromCity(String city) {
-        //@todo: Get lat/lng from city with Webservice
+        System.debug('LDC is city from getLatLngFromCity:'+ city);
+        // TODO: Get lat/lng from city with Webservice
         this.lat = decimal.valueOf('40.7127837');
         this.lng = decimal.valueOf('-74.0059413');
     }

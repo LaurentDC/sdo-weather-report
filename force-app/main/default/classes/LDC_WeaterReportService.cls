@@ -37,7 +37,7 @@ public with sharing class LDC_WeaterReportService {
             if (!Test.isRunningTest()) {
                 Database.SaveResult databaseResult = Database.insert(report);
                 if (databaseResult.isSuccess()) {
-                    System.debug('LDC insertWeatherReport : ' + databaseResult);
+                    System.debug('LDC in  sertWeatherReport : ' + databaseResult);
                     result = SUCCESS;
                 } else {
                     result = ERROR;

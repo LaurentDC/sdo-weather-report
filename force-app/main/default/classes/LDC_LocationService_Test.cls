@@ -8,13 +8,9 @@ private class LDC_LocationService_Test {
             BillingLongitude = 2.3488
         );
         insert account;
-        Account testAccount = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
-
         Contact contact = new Contact(
            FirstName = 'Test',
            LastName = 'Contact',
-           AccountId = testAccount.Id,
-           Email = 'test@test.com',
             MailingLatitude = 48.85341,
             MailingLongitude = 2.3488
         );

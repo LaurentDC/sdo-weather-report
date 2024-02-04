@@ -1,8 +1,3 @@
-/**
- * @author Laurent Dibo-Cohen
- * @date 2024-01-30
- * @description : This class is a utility class for the Weather_Condition__mdt Custom Metadata Type.
- */
 public with sharing class LDC_WeatherUtils {
 
     private static final List<String> MOCK_FIELDS = getWeatherConditionLabels();
@@ -14,13 +9,6 @@ public with sharing class LDC_WeatherUtils {
         }
         return weatherConditionLabels;
     }
-    /**
-     * @description : This method returns a Map of the Weather Condition values for the given weatherConditionLabel and language.
-     * @param weatherConditionLabel : The weather condition label.
-     * @param language : The language to get the weather condition values for (to be implemnted).
-     * @return : A Map of the Weather Condition values for the given weatherConditionLabel and language.
-     * @todo : Implement language parameter to retrieve the weather condition values for the given language.
-     */
     public static Map<String, String> getWeatherConditionValues(String weatherConditionLabel, String language){
         Map<String, String> weatherConditionValues = new Map<String, String>();
         String langISO2 = 'EN';
