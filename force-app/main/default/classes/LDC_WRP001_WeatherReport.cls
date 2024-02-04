@@ -6,27 +6,31 @@
  */
 public class LDC_WRP001_WeatherReport {
     @AuraEnabled
-    public Integer temperature;
+    public Decimal temperature {get;set;}
     @AuraEnabled
-    public Integer humidity;
+    public Decimal humidity {get;set;}
     @AuraEnabled
-    public Integer windSpeed;
+    public Decimal windSpeed {get;set;}
     @AuraEnabled
-    public String weatherConditionLabel;
+    public String weatherConditionLabel {get;set;}
     @AuraEnabled
-    public String conditionIconUrl;
+    public String conditionIconUrl {get;set;}
     @AuraEnabled
-    public String conditionKey;
+    public String conditionKey {get;set;}
     @AuraEnabled
-    public String status;
+    public String status {get;set;}
     @AuraEnabled
-    public String message;
+    public String message {get;set;}
     @AuraEnabled
-    public String recordId;
+    public String recordId {get;set;}
     @AuraEnabled
-    public String recordType;
+    public String recordType {get;set;}
     @AuraEnabled
-    public Double latitude;
+    public Double latitude {get;set;}
     @AuraEnabled
-    public Double longitude;
+    public Double longitude {get;set;}
+
+    public static List<LDC_WRP001_WeatherReport> getSampleWeatherData(String jsonInput) {
+        return (List<LDC_WRP001_WeatherReport>) System.JSON.deserialize(jsonInput, List<LDC_WRP001_WeatherReport>.class);
+    }
 }

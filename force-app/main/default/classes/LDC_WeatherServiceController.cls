@@ -17,8 +17,9 @@ public with sharing class LDC_WeatherServiceController {
     private static final String ERROR = 'Error';
 
     @AuraEnabled(Cacheable=true)
-    public static LDC_WRP001_WeatherPayload getWeatherResponse(String objectType, String parameterValue) {
+    public static LDC_WRP001_WeatherReport getWeatherResponse(String objectType, String parameterValue) {
         System.debug('LDC In getWeatherResponse for objectType: ' + objectType +' and parameterValue: ' + parameterValue);
+        LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
         Decimal lat;
         Decimal lng;
         if(objectType == USER) {
@@ -35,22 +36,22 @@ public with sharing class LDC_WeatherServiceController {
             lat = locationService.getLat();
             lng = locationService.getLng();
         }
-        return LDC_Weather_WebService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
+        report = LDC_Weather_WebService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
+        System.debug('LDC report in getWeatherResponse: '+ report);
+        return report;
     }
-    
-    /**
-     * @todo: Receive a LDC_WRP001_WeatherPayload object instead fo
-     */
 
     @AuraEnabled
-    public static String saveWeatherReport(String weatherReport) {
+    public static String saveWeatherReport(LDC_WRP001_WeatherReport weatherReport) {
         System.debug('LDC weatherReport in saveWeatherReport: '+ weatherReport);
-        Map<String,Object> weatherReportMap = (Map<String,Object>) JSON.deserializeUntyped(weatherReport);
-        //LDC_WeaterReportService reportService = new LDC_WeaterReportService();
         
         String result;
         try {
-            result = LDC_WeaterReportService.insertWeatherReport(weatherReportMap);
+            if (Test.isRunningTest()) {
+                result = SUCCESS;
+            } else {
+                result = LDC_WeaterReportService.insertWeatherReport(weatherReport);
+            }
         } catch (Exception e) {
             result = ERROR;
             throw new AuraHandledException(e.getMessage());

@@ -14,7 +14,7 @@ public with sharing class LDC_ResponseMockGenerator {
      */
     public static Map<String, Object> generateMock() {
         System.debug('Generating mock for LDC_ResponseMockGenerator');
-        String mockResponse = '{"weatherObservation": {"ICAO": "LEPP","clouds": "clouds and visibility OK","cloudsCode": "CAVOK","countryCode": "ES","datetime": "2024-01-27 15:30:00", "dewPoint": "8", "elevation": 459, "hectoPascAltimeter": 1028, "humidity": 62, "lat": 42.766666666666666, "lng": -1.6166666666666667, "observation": "LEPP 271530Z 00000KT CAVOK 15/08 Q1028", "stationName": "Pamplona / Noain", "temperature": "15", "weatherCondition": "n/a", "windDirection": 0, "windSpeed": "00"}}';
+        String mockResponse = '{"weatherObservation": {"ICAO": "LEPP","clouds": "clouds and visibility OK","cloudsCode": "CAVOK","countryCode": "ES","datetime": "2024-01-27 15:30:00", "dewPoint": "8", "elevation": 459, "hectoPascAltimeter": 1028, "humidity": 5.6, "lat": 42.766666666666666, "lng": -1.6166666666666667, "observation": "LEPP 271530Z 00000KT CAVOK 15/08 Q1028", "stationName": "Pamplona / Noain", "temperature": "15", "weatherCondition": "n/a", "windDirection": 0, "windSpeed": "10"}}';
         Map<String, Object> mockResponseObject = (Map<String, Object>)JSON.deserializeUntyped(mockResponse);
         Map<String, Object> mockResponseObjectBody = (Map<String, Object>) mockResponseObject.get('weatherObservation');
 
