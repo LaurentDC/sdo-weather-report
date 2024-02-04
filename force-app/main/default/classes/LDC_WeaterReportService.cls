@@ -35,9 +35,17 @@ public with sharing class LDC_WeaterReportService {
         System.debug('LDC insertWeatherReport : ' + report);
         try {
             if (!Test.isRunningTest()) {
-                insert report;   
+                Database.SaveResult databaseResult = Database.insert(report);
+                if (databaseResult.isSuccess()) {
+                    System.debug('LDC insertWeatherReport : ' + databaseResult);
+                    result = SUCCESS;
+                } else {
+                    result = ERROR;
+                    System.debug('LDC insertWeatherReport : Error :'+ databaseResult.getErrors());
+                }
+            } else {
+                result = SUCCESS;
             }
-            result = SUCCESS;
             System.debug('LDC insertWeatherReport : Success');
         } catch (DmlException e) {
             result = ERROR;

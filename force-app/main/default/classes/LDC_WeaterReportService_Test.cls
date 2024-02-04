@@ -16,15 +16,9 @@ private class LDC_WeaterReportService_Test {
         String result;
         String PREFIX = 'WR';
         Id currentUserId = UserInfo.getUserId();
-        LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
-        report.recordType = 'USER';
+        LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
+        report.recordType = 'User';
         report.recordId = currentUserId;
-        report.humidity = 50;
-        report.temperature = 12;
-        report.windSpeed = 20;   
-        report.latitude = 48.85341;
-        report.longitude = 2.3488;
-        report.weatherConditionLabel = 'cloudy' ;
         result = LDC_WeaterReportService.insertWeatherReport(report); 
         System.assertEquals(result, 'Success');
     }
@@ -34,15 +28,9 @@ private class LDC_WeaterReportService_Test {
         String result;
         String PREFIX = 'WR';
         Account testAccount = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
-        LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
+        LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
         report.recordType = 'Account';
         report.recordId = testAccount.Id;
-        report.humidity = 50;
-        report.temperature = 12;
-        report.windSpeed = 20;   
-        report.latitude = 48.85341;
-        report.longitude = 2.3488;
-        report.weatherConditionLabel = 'cloudy' ;
         result = LDC_WeaterReportService.insertWeatherReport(report); 
         System.assertEquals(result, 'Success');
     }
