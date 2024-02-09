@@ -93,6 +93,7 @@
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-report</tabs>
     <tabs>LDC_Weather_Report__c</tabs>
+    <tabs>LDC_Log_Object__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>SDO_Sales_App_UtilityBar</utilityBar>
 </CustomApplication>

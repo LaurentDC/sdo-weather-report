@@ -29,6 +29,12 @@ global with sharing class LDC_Weather_Http_Callout extends LDC_Http_Callout{
                 System.debug(body);
             }
         } else {
+            // Create log object
+            Map<String, String> logError = new Map<String, String>();
+            logError.put('function', 'LDC_Weather_Http_Callout.onCalloutSuccess');
+            logError.put('message', 'Error calling endpoint '+ endpoint +' with status code '+ resp.getStatusCode());
+            LDC_LogObjectService logger = new LDC_LogObjectService();
+            logger.insertLogObject(logError);
             throw new LDC_CalloutException('Error calling endpoint '+ endpoint +' with status code '+ resp.getStatusCode());
         }
         return body;

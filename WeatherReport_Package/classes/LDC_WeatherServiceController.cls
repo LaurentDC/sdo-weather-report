@@ -47,13 +47,15 @@ public with sharing class LDC_WeatherServiceController {
         
         String result;
         try {
-            if (Test.isRunningTest()) {
-                result = SUCCESS;
-            } else {
-                result = LDC_WeaterReportService.insertWeatherReport(weatherReport);
-            }
+            result = LDC_WeaterReportService.insertWeatherReport(weatherReport);
         } catch (Exception e) {
             result = ERROR;
+            // Create log object
+            Map<String, String> logError = new Map<String, String>();
+            logError.put('function', 'LDC_WeatherServiceController.saveWeatherReport');
+            logError.put('message', e.getMessage());
+            LDC_LogObjectService logger = new LDC_LogObjectService();
+            logger.insertLogObject(logError);
             throw new AuraHandledException(e.getMessage());
         }
         return result;

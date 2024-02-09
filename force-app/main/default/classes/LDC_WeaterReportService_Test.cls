@@ -20,10 +20,10 @@ private class LDC_WeaterReportService_Test {
         report.recordType = 'USER';
         report.recordId = currentUserId;
 
-        Test.startTest();
-        result = LDC_WeaterReportService.insertWeatherReport(report); 
-        Test.stopTest();
-        System.assertEquals(result, 'Success');
+        result = LDC_WeaterReportService.insertWeatherReport(report);
+
+        LDC_Weather_Report__c validateReport = [SELECT Id, LDC_Weather_User__c FROM LDC_Weather_Report__c WHERE LDC_Weather_User__c = :currentUserId LIMIT 1];
+        System.assertEquals(validateReport.LDC_Weather_User__c, currentUserId);
     }
     @isTest
     static void insertAccountWeatherReport_Test() {
@@ -34,9 +34,9 @@ private class LDC_WeaterReportService_Test {
         LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
         report.recordType = 'Account';
         report.recordId = testAccount.Id;
-        Test.startTest();
+
         result = LDC_WeaterReportService.insertWeatherReport(report); 
-        Test.stopTest();
-        System.assertEquals(result, 'Success');
+        LDC_Weather_Report__c validateReport = [SELECT Id, LDC_Weather_Account__c FROM LDC_Weather_Report__c WHERE LDC_Weather_Account__c = :testAccount.Id LIMIT 1];
+        System.assertEquals(validateReport.LDC_Weather_Account__c, testAccount.Id);
     }
 }

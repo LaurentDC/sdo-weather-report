@@ -126,11 +126,15 @@
     <tabs>standard-Swarm</tabs>
     <tabs>standard-WaveHomeLightning</tabs>
     <tabs>LDC_Weather_Report__c</tabs>
+    <tabs>LDC_Log_Object__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Service_Console_2_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>Knowledge__kav</tab>
+        </mappings>
+        <mappings>
+            <tab>LDC_Log_Object__c</tab>
         </mappings>
         <mappings>
             <tab>LDC_Weather_Report__c</tab>
