@@ -106,6 +106,46 @@
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Comment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Function__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LDC_Log_Object__c.LDC_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LDC_Weather_Report__c.LDC_Date_Sent__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -161,6 +201,9 @@
     </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LDC_Log_Object__c-LDC Log Object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LDC_Weather_Report__c-Weather Report Layout</layout>

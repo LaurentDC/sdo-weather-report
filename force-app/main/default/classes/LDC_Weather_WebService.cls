@@ -68,8 +68,15 @@ public with sharing class LDC_Weather_WebService {
                 wrapper.status = STATUS_SUCCESS;
             }
         } catch (Exception e) {
+            // LDC : Send error to LWC component
             wrapper.status = STATUS_ERROR;
             wrapper.message = e.getMessage();
+            // Create log object
+            Map<String, String> logError = new Map<String, String>();
+            logError.put('function', 'LDC_Weather_WebService.getWeatherResponse');
+            logError.put('message', e.getMessage());
+            LDC_LogObjectService logger = new LDC_LogObjectService();
+            logger.insertLogObject(logError);
             System.debug('LDC wrapper ERROR : ' + wrapper);
             if (!Test.isRunningTest()) {
                 throw new AuraHandledException(e.getMessage());

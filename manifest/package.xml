@@ -2,27 +2,27 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>LDC_CalloutException</members>
-        <members>LDC_Http_Callout_Test</members>
-        <members>LDC_Http_Callout</members>
-        <members>LDC_HttpResponseMock</members>
-        <members>LDC_LocationService_Test</members>
-        <members>LDC_LocationService</members>
-        <members>LDC_MockHttpResponseGenerator</members>
-        <members>LDC_ResponseMockGenerator_Test</members>
-        <members>LDC_ResponseMockGenerator</members>
-        <members>LDC_TestDataFactory</members>
-        <members>LDC_WeaterReportService_Test</members>
-        <members>LDC_WeaterReportService</members>
-        <members>LDC_Weather_Http_Callout_Test</members>
-        <members>LDC_Weather_Http_Callout</members>
-        <members>LDC_Weather_WebService_Test</members>
-        <members>LDC_Weather_WebService</members>
-        <members>LDC_WeatherServiceController_Test</members>
-        <members>LDC_WeatherServiceController</members>
-        <members>LDC_WeatherUtils_Test</members>
-        <members>LDC_WeatherUtils</members>
-        <members>LDC_WRP001_WeatherReport_Test</members>
-        <members>LDC_WRP001_WeatherReport</members>
+		<members>LDC_HttpResponseMock</members>
+		<members>LDC_Http_Callout</members>
+		<members>LDC_Http_Callout_Test</members>
+		<members>LDC_LocationService</members>
+		<members>LDC_LocationService_Test</members>
+		<members>LDC_MockHttpResponseGenerator</members>
+		<members>LDC_ResponseMockGenerator</members>
+		<members>LDC_ResponseMockGenerator_Test</members>
+		<members>LDC_TestDataFactory</members>
+		<members>LDC_WRP001_WeatherReport</members>
+		<members>LDC_WRP001_WeatherReport_Test</members>
+		<members>LDC_WeaterReportService</members>
+		<members>LDC_WeaterReportService_Test</members>
+		<members>LDC_WeatherServiceController</members>
+		<members>LDC_WeatherServiceController_Test</members>
+		<members>LDC_WeatherUtils</members>
+		<members>LDC_WeatherUtils_Test</members>
+		<members>LDC_Weather_Http_Callout</members>
+		<members>LDC_Weather_Http_Callout_Test</members>
+		<members>LDC_Weather_WebService</members>
+		<members>LDC_Weather_WebService_Test</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -32,6 +32,7 @@
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>LDC_Log_Object__c</members>
 		<members>LDC_Weather_Report__c</members>
 		<members>LDC_Weather_Settings__c</members>
 		<members>Weather_Condition__mdt</members>
@@ -52,6 +53,7 @@
 	<types>
 		<members>Account-Account Layout</members>
 		<members>Account-SDO - Account</members>
+		<members>LDC_Log_Object__c-LDC Log Object Layout</members>
 		<members>LDC_Weather_Report__c-Weather Report Layout</members>
 		<name>Layout</name>
 	</types>
@@ -74,5 +76,5 @@
 		<members>Standard</members>
 		<name>Profile</name>
 	</types>
-	<version>60.0</version>
+	<version>58.0</version>
 </Package>

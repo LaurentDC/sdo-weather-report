@@ -26,15 +26,18 @@ private class LDC_WeatherServiceController_Test {
         LDC_WRP001_WeatherReport report = new LDC_WRP001_WeatherReport();
         Account testAccount = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
         report = LDC_WeatherServiceController.getWeatherResponse('Account', (String) testAccount.Id);
-        // 48.85341, 2.3488
         System.assert(report.temperature == 20);
     }
     @isTest
     static void saveWeatherReport_Test() {
+        Account testAccount = [SELECT Id FROM Account WHERE Name='Test Account' LIMIT 1];
         LDC_WRP001_WeatherReport report = LDC_TestDataFactory.createTestWrapper();
+        report.recordId = testAccount.Id;
+        report.recordType = 'Account';
         String result;
-
         result = LDC_WeatherServiceController.saveWeatherReport(report);
-        System.assert(result == 'Success');
+        
+        LDC_Weather_Report__c validateReport = [SELECT Id, LDC_Weather_Account__c FROM LDC_Weather_Report__c WHERE LDC_Weather_Account__c = :testAccount.Id LIMIT 1];
+        System.assertEquals(validateReport.LDC_Weather_Account__c, testAccount.Id);
     }
 }

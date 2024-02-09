@@ -1,3 +1,10 @@
+/**
+ * @author Laurent Dibo-Cohen
+ * @version 1.0
+ * @date 2024-02-09
+ * @description : This class is used to manage the weather report persistence in Salesforce.
+ * @return : Success or Error
+ */
 public with sharing class LDC_WeaterReportService {
     private static final String PREFIX = 'WR';
     private static final String SUCCESS = 'Success';
@@ -34,21 +41,16 @@ public with sharing class LDC_WeaterReportService {
         report.Name = PREFIX + '_' + System.currentTimeMillis();
         System.debug('LDC insertWeatherReport : ' + report);
         try {
-            if (!Test.isRunningTest()) {
-                Database.SaveResult databaseResult = Database.insert(report);
-                if (databaseResult.isSuccess()) {
-                    System.debug('LDC in  sertWeatherReport : ' + databaseResult);
-                    result = SUCCESS;
-                } else {
-                    result = ERROR;
-                    System.debug('LDC insertWeatherReport : Error :'+ databaseResult.getErrors());
-                }
-            } else {
-                result = SUCCESS;
-            }
+            insert report;
             System.debug('LDC insertWeatherReport : Success');
         } catch (DmlException e) {
             result = ERROR;
+            // Create log object
+            Map<String, String> logError = new Map<String, String>();
+            logError.put('function', 'LDC_WeaterReportService.insertWeatherReport');
+            logError.put('message', e.getMessage());
+            LDC_LogObjectService logger = new LDC_LogObjectService();
+            logger.insertLogObject(logError);
             System.debug('LDC insertWeatherReport : Error :'+ e.getMessage());
         }
         return result;

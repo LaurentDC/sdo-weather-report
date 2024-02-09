@@ -7,6 +7,8 @@
         <members>LDC_Http_Callout_Test</members>
         <members>LDC_LocationService</members>
         <members>LDC_LocationService_Test</members>
+        <members>LDC_LogObjectService</members>
+        <members>LDC_LogObjectService_Test</members>
         <members>LDC_MockHttpResponseGenerator</members>
         <members>LDC_ResponseMockGenerator</members>
         <members>LDC_ResponseMockGenerator_Test</members>
@@ -32,6 +34,14 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>LDC_Log_Object__c.LDC_Assigned_To__c</members>
+        <members>LDC_Log_Object__c.LDC_Category__c</members>
+        <members>LDC_Log_Object__c.LDC_Comment__c</members>
+        <members>LDC_Log_Object__c.LDC_Description__c</members>
+        <members>LDC_Log_Object__c.LDC_Function__c</members>
+        <members>LDC_Log_Object__c.LDC_Priority__c</members>
+        <members>LDC_Log_Object__c.LDC_Source__c</members>
+        <members>LDC_Log_Object__c.LDC_Status__c</members>
         <members>LDC_Weather_Report__c.LDC_Date_Sent__c</members>
         <members>LDC_Weather_Report__c.LDC_Humidity__c</members>
         <members>LDC_Weather_Report__c.LDC_Location_Report__c</members>
@@ -50,6 +60,7 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>LDC_Log_Object__c</members>
         <members>LDC_Weather_Report__c</members>
         <members>LDC_Weather_Settings__c</members>
         <members>Weather_Condition__mdt</members>
@@ -70,6 +81,7 @@
     <types>
         <members>Account-Account Layout</members>
         <members>Account-SDO - Account</members>
+        <members>LDC_Log_Object__c-LDC Log Object Layout</members>
         <members>LDC_Weather_Report__c-Weather Report Layout</members>
         <name>Layout</name>
     </types>
@@ -78,6 +90,7 @@
         <name>LightningComponentBundle</name>
     </types>
     <types>
+        <members>LDC_Log_Object__c.All</members>
         <members>LDC_Weather_Report__c.All</members>
         <name>ListView</name>
     </types>
