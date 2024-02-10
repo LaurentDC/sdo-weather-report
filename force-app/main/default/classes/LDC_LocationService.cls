@@ -1,6 +1,6 @@
 public with sharing class LDC_LocationService {
-    private Decimal lat {get; set;}
-    private Decimal lng {get; set;}
+    @TestVisible private Decimal lat {get; set;}
+    @TestVisible private Decimal lng {get; set;}
 
     public LDC_LocationService(Id sObjectId) {
         if (sObjectId != null) {

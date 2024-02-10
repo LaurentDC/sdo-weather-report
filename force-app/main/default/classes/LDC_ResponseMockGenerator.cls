@@ -7,7 +7,7 @@
 
 public with sharing class LDC_ResponseMockGenerator {
     // Retrieve mock fields from Custom Metadata Type Weather_Condition__mdt
-    private static final List<String> MOCK_FIELDS = LDC_WeatherUtils.getWeatherConditionLabels();
+    @TestVisible private static final List<String> MOCK_FIELDS = LDC_WeatherUtils.getWeatherConditionLabels();
     /**
      * @description Generates a mock for the LDC_ResponseMockGenerator class
      * @return a Map of object with random weatherCondition values from the custom metatype Weather_Condition__mdt

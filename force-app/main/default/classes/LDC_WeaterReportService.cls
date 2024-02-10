@@ -6,9 +6,9 @@
  * @return : Success or Error
  */
 public with sharing class LDC_WeaterReportService {
-    private static final String PREFIX = 'WR';
-    private static final String SUCCESS = 'Success';
-    private static final String ERROR = 'ERROR';
+    @TestVisible private static final String PREFIX = 'WR';
+    @TestVisible private static final String SUCCESS = 'Success';
+    @TestVisible private static final String ERROR = 'Error';
     
     public static String insertWeatherReport(LDC_WRP001_WeatherReport weatherReport) {
         String result = null;

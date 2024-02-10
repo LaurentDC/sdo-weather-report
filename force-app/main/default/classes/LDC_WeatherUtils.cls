@@ -1,6 +1,6 @@
 public with sharing class LDC_WeatherUtils {
 
-    private static final List<String> MOCK_FIELDS = getWeatherConditionLabels();
+    @TestVisible private static final List<String> MOCK_FIELDS = getWeatherConditionLabels();
 
     public static List<String> getWeatherConditionLabels(){
         List<String> weatherConditionLabels = new List<String>(); 

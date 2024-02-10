@@ -5,9 +5,10 @@
  * @version: 1.0.0
  */
 public with sharing class LDC_Weather_WebService {
-    private static final String STATUS_SUCCESS = 'SUCCESS';
-    private static final String STATUS_LIMIT = 'LIMIT_EXCEEDED';
-    private static final String STATUS_ERROR = 'ERROR';
+    
+    @TestVisible private static final String STATUS_SUCCESS = 'Success';
+    @TestVisible private static final String STATUS_LIMIT = 'LIMIT_EXCEEDED';
+    @TestVisible private static final String STATUS_ERROR = 'Error';
 
     /**
      * @description: this method is called by the LDC_WRP001_WeatherController class to retreive weather data from the Weather API with latlng
@@ -43,10 +44,12 @@ public with sharing class LDC_Weather_WebService {
                     }
                 );
             } else {
+                // Mock the response for the test suite
                 LDC_HttpResponseMock mockResponse = new LDC_HttpResponseMock();
                 HttpRequest request = new HttpRequest();
                 request.setEndpoint(fullPath);
                 HttpResponse response = mockResponse.respond(request);
+                // Generate an error in the test suite
                 if (lng == '123') {
                     result = null;
                 } else {
@@ -62,6 +65,7 @@ public with sharing class LDC_Weather_WebService {
                 wrapper.temperature = Double.valueOf(weatherObservation.get('temperature'));
                 wrapper.humidity = Double.valueOf(weatherObservation.get('humidity'));
                 wrapper.windSpeed = Double.valueOf(weatherObservation.get('windSpeed'));
+                // Send null as the language translation is not supported yet
                 wrapper.weatherConditionLabel = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionLabel');
                 wrapper.conditionIconUrl = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionIcon');
                 wrapper.conditionKey = LDC_WeatherUtils.getWeatherConditionValues(String.valueOf(weatherObservation.get('weatherCondition')), null).get('weatherConditionKey');

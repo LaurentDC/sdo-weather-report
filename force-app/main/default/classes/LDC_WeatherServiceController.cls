@@ -9,12 +9,12 @@
  */
 
 public with sharing class LDC_WeatherServiceController {
-    private static final String ACCOUNT = 'Account';
-    private static final String CONTACT = 'Contact';
-    private static final String USER = 'User';
-    private static final String CITY = 'City';
-    private static final String SUCCESS = 'Success';
-    private static final String ERROR = 'Error';
+    @TestVisible private static final String ACCOUNT = 'Account';
+    @TestVisible private static final String CONTACT = 'Contact';
+    @TestVisible private static final String USER = 'User';
+    @TestVisible private static final String CITY = 'City';
+    @TestVisible private static final String SUCCESS = 'Success';
+    @TestVisible private static final String ERROR = 'Error';
 
     @AuraEnabled(Cacheable=true)
     public static LDC_WRP001_WeatherReport getWeatherResponse(String objectType, String parameterValue) {
