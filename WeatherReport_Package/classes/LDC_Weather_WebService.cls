@@ -5,9 +5,9 @@
  * @version: 1.0.0
  */
 public with sharing class LDC_Weather_WebService {
-    private static final String STATUS_SUCCESS = 'SUCCESS';
+    private static final String STATUS_SUCCESS = 'Success';
     private static final String STATUS_LIMIT = 'LIMIT_EXCEEDED';
-    private static final String STATUS_ERROR = 'ERROR';
+    private static final String STATUS_ERROR = 'Error';
 
     /**
      * @description: this method is called by the LDC_WRP001_WeatherController class to retreive weather data from the Weather API with latlng
