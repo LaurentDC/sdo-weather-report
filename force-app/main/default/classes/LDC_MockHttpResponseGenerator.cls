@@ -1,6 +1,6 @@
 @IsTest
-global with sharing class LDC_MockHttpResponseGenerator implements HttpCalloutMock {
-    global HTTPResponse respond(HTTPRequest req) {
+public class LDC_MockHttpResponseGenerator implements HttpCalloutMock {
+    public HTTPResponse respond(HTTPRequest req) {
         // Create a fake response.
         // Set response values, and 
         // return response.

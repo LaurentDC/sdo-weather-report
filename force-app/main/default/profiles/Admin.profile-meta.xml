@@ -72,6 +72,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LDC_WeatherAPIService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LDC_WeatherAPIService_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LDC_WeatherServiceController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -93,14 +101,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>LDC_Weather_Http_Callout_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>LDC_Weather_WebService</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>LDC_Weather_WebService_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>

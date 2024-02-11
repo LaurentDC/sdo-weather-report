@@ -1,5 +1,5 @@
 @isTest
-private with sharing class LDC_Http_Callout_Test {
+public with sharing class LDC_Http_Callout_Test {
     @isTest
     static void test_sendItemMapBody() {
         Map<String, object> body = new Map<String, object>();

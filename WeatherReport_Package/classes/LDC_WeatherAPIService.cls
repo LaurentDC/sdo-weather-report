@@ -4,7 +4,7 @@
  * @created: 2024-01-30
  * @version: 1.0.0
  */
-public with sharing class LDC_Weather_WebService {
+public with sharing class LDC_WeatherAPIService {
     
     @TestVisible private static final String STATUS_SUCCESS = 'Success';
     @TestVisible private static final String STATUS_LIMIT = 'LIMIT_EXCEEDED';
@@ -34,8 +34,8 @@ public with sharing class LDC_Weather_WebService {
         Map<String,Object> result = new Map<String,Object>();
         try {
             if (!Test.isRunningTest()) {
-                LDC_Http_Callout getWeather = LDC_Weather_Http_Callout.getInstance();
-                result = (Map<String,Object>)getWeather.sendItem(
+                LDC_Http_Callout weatherCallout = LDC_Weather_Http_Callout.getInstance();
+                result = (Map<String,Object>)weatherCallout.sendItem(
                     '', 
                     'GET',
                     fullPath,
@@ -59,7 +59,6 @@ public with sharing class LDC_Weather_WebService {
             }
 
             System.debug('LDC result:'+ result);
-            Map<String,String> payload = new Map<String,String>();
             if (result.containsKey('weatherObservation')) {
                 Map<String, Object> weatherObservation = (Map<String,Object>)result.get('weatherObservation');
                 wrapper.temperature = Double.valueOf(weatherObservation.get('temperature'));
@@ -77,14 +76,12 @@ public with sharing class LDC_Weather_WebService {
             wrapper.message = e.getMessage();
             // Create log object
             Map<String, String> logError = new Map<String, String>();
-            logError.put('function', 'LDC_Weather_WebService.getWeatherResponse');
+            logError.put('function', 'LDC_WeatherAPIService.getWeatherResponse');
             logError.put('message', e.getMessage());
             LDC_LogObjectService logger = new LDC_LogObjectService();
             logger.insertLogObject(logError);
             System.debug('LDC wrapper ERROR : ' + wrapper);
-            if (!Test.isRunningTest()) {
-                throw new AuraHandledException(e.getMessage());
-            }
+            throw new AuraHandledException(e.getMessage());
         }
         return wrapper;
     }

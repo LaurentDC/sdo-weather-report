@@ -15,14 +15,14 @@
 		<members>LDC_WRP001_WeatherReport_Test</members>
 		<members>LDC_WeaterReportService</members>
 		<members>LDC_WeaterReportService_Test</members>
+		<members>LDC_WeatherAPIService</members>
+		<members>LDC_WeatherAPIService_Test</members>
 		<members>LDC_WeatherServiceController</members>
 		<members>LDC_WeatherServiceController_Test</members>
 		<members>LDC_WeatherUtils</members>
 		<members>LDC_WeatherUtils_Test</members>
 		<members>LDC_Weather_Http_Callout</members>
 		<members>LDC_Weather_Http_Callout_Test</members>
-		<members>LDC_Weather_WebService</members>
-		<members>LDC_Weather_WebService_Test</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -75,6 +75,10 @@
 		<members>SDO-Service</members>
 		<members>Standard</members>
 		<name>Profile</name>
+	</types>
+	<types>
+		<members>Geonames</members>
+		<name>RemoteSiteSetting</name>
 	</types>
 	<version>58.0</version>
 </Package>

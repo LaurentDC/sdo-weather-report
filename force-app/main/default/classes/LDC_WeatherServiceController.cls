@@ -36,7 +36,7 @@ public with sharing class LDC_WeatherServiceController {
             lat = locationService.getLat();
             lng = locationService.getLng();
         }
-        report = LDC_Weather_WebService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
+        report = LDC_WeatherAPIService.getWeatherResponse(String.valueOf(lat), String.valueOf(lng));
         System.debug('LDC report in getWeatherResponse: '+ report);
         return report;
     }
