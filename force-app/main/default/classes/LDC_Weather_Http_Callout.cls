@@ -4,7 +4,7 @@
  * @version : 1.0
  * @date : 2024-01-30
  */
-global with sharing class LDC_Weather_Http_Callout extends LDC_Http_Callout{
+public with sharing class LDC_Weather_Http_Callout extends LDC_Http_Callout{
     public static LDC_Weather_Http_Callout instance = null;
 
     public static LDC_Weather_Http_Callout getInstance() {
@@ -13,8 +13,8 @@ global with sharing class LDC_Weather_Http_Callout extends LDC_Http_Callout{
         }
         return instance;
     }
-    global override Object onCalloutSuccess(String endpoint, HttpRequest req, HttpResponse resp){
-        Map<String,Object> result = new Map<String,Object>();
+    
+    public override Object onCalloutSuccess(String endpoint, HttpRequest req, HttpResponse resp){
         Map<String, Object> body;
         if (resp.getStatusCode() == 200) {
             if (resp.getBody() != null) {
@@ -23,10 +23,7 @@ global with sharing class LDC_Weather_Http_Callout extends LDC_Http_Callout{
                     //if the geonames webservice has exceed its call limit, return a mock response from the mock generator
                     System.debug('LDC limit exceeded : ' + body.get('status'));
                     body = LDC_ResponseMockGenerator.generateMock();
-                } else {
-                    System.debug('LDC not limit exceeded');
                 }
-                System.debug(body);
             }
         } else {
             // Create log object
