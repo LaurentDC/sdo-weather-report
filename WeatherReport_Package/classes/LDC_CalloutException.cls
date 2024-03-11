@@ -1,1 +1,0 @@
-public class LDC_CalloutException extends Exception {}
